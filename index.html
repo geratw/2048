@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-  <div id="board" class="board"></div>
-  <div id="info">
-    <p><strong>Controls:</strong> Use arrow keys to move tiles.</p>
-    <p><strong>Score:</strong> <span id="score">0</span></p>
-    <p><strong>Status:</strong> <span id="status">Playing</span></p>
-  </div>
-  <script src="scripts/script.js"></script>
-</body>
+  <head>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="intro">
+      <h1 class="intro_title">2048</h1>
+      <div class="status-game">
+        <p class="score score-left"><strong>Best Score:</strong> <span id="best-score">0</span></p>
+        <button class="btn-new-game" id="newGame">New Game</button>
+        <p class="score score-right"><strong>Score:</strong> <span id="score">0</span></p>
+      </div>
+    </div>
+    <div class="border-board">
+      <div id="board" class="board"></div>
+    </div>
+    <div id="info">
+      <p><strong>Controls:</strong> Use arrow keys to move tiles.</p>
+      <div class="guide_arrow-wrap">
+        <span class="guide_arrow"> &uHar; </span>
+        <span class="guide_arrow"> &lHar; </span>
+        <span class="guide_arrow"> &rHar; </span>
+        <span class="guide_arrow"> &dHar; </span>
+      </div>
+    </div>
+    <script src="scripts/script.js"></script>
+  </body>
 </html>

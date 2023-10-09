@@ -2,10 +2,23 @@ const boardSize = 4;
 let board = [];
 let score = 0;
 
+const newGame = document.getElementById("newGame");
+newGame.addEventListener("click", () => {
+  score = 0;
+  initializeBoard();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const bestScoreStart = localStorage.getItem("bestScore");
+
+  bestScoreStart === null ? localStorage.setItem("bestScore", "0") : (document.getElementById("best-score").innerText = bestScoreStart);
+});
+
 function initializeBoard() {
   board = Array.from({ length: boardSize }, () => Array(boardSize).fill(0));
   setStartingValues();
   updateBoard();
+  updateScore();
 }
 
 function setStartingValues() {
@@ -32,17 +45,17 @@ function updateBoard() {
 
 function getTileColor(value) {
   const colors = {
-    2: "#eee4da",
-    4: "#ede0c8",
-    8: "#f2b179",
-    16: "#f59563",
-    32: "#f67c5f",
-    64: "#f65e3b",
-    128: "#edcf72",
-    256: "#edcc61",
-    512: "#edc850",
-    1024: "#edc53f",
-    2048: "#edc22e",
+    2: "#00d0a4",
+    4: "#dd7373",
+    8: "#7d53de",
+    16: "#6622cc",
+    32: "#00bfb2",
+    64: "#c06ff2",
+    128: "#340068",
+    256: "#3e92cc",
+    512: "#d8315b",
+    1024: "#1c0b19",
+    2048: "#1c0b19",
   };
   return colors[value] || "#3c3a32";
 }
@@ -168,6 +181,22 @@ function spawnRandomTile() {
   }
 }
 
+function checkGameOver() {
+  for (let i = 0; i < boardSize; i++) {
+    for (let j = 0; j < boardSize; j++) {
+      if (
+        board[i][j] === 0 ||
+        (i < boardSize - 1 && board[i][j] === board[i + 1][j]) ||
+        (j < boardSize - 1 && board[i][j] === board[i][j + 1])
+      ) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+
 document.addEventListener("keydown", (event) => {
   const originalBoard = JSON.parse(JSON.stringify(board));
   let moved = false;
@@ -189,6 +218,16 @@ document.addEventListener("keydown", (event) => {
       spawnRandomTile();
     }
     updateBoard();
+
+    if (checkGameOver()) {
+      alert("Game over! You've lost.");
+
+      const bestScore = localStorage.getItem("bestScore");
+      if (bestScore < score) {
+        localStorage.setItem("bestScore", score);
+        document.getElementById("best-score").innerText = score;
+      }
+    }
   }
 });
 

@@ -13,9 +13,7 @@ html {
 
 .score {
   width: 300px;
-
   background: linear-gradient(90deg, #f9d49a, #d4a8cf);
-
   color: #4a3647;
   padding: 0.5em 0.75em;
 }
@@ -32,7 +30,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 5vw; /* Центрирование элементов по горизонтали */
+  margin: 0 5vw;
 }
 
 .btn-new-game {
@@ -45,7 +43,7 @@ html {
   box-shadow: inset 0 0 0px 2px #d4a8cf;
   letter-spacing: 0.1em;
   font-weight: bold;
-  text-transform: lowercase;
+  text-transform: uppercase;
   cursor: pointer;
 }
 
@@ -60,11 +58,13 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ccc0b3;
+  background-color: #6e5f74;
 }
 
 #info {
   text-align: center;
+  color: #fff;
+  font-size: 24px;
 }
 
 .board {
@@ -94,4 +94,9 @@ html {
   &_title {
     font-size: 4rem;
   }
+}
+
+.arrow-img img {
+  width: 50px;
+  height: 50px;
 }

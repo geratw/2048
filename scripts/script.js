@@ -2,10 +2,14 @@ const boardSize = 4;
 let board = [];
 let score = 0;
 
-const newGame = document.getElementById("newGame");
-newGame.addEventListener("click", () => {
+function newGameStart() {
   score = 0;
   initializeBoard();
+}
+
+const newGame = document.getElementById("newGame");
+newGame.addEventListener("click", () => {
+  newGameStart();
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -57,7 +61,7 @@ function getTileColor(value) {
     1024: "#1c0b19",
     2048: "#1c0b19",
   };
-  return colors[value] || "#3c3a32";
+  return colors[value] || "#6e5f74";
 }
 
 function moveUp() {
@@ -220,7 +224,10 @@ document.addEventListener("keydown", (event) => {
     updateBoard();
 
     if (checkGameOver()) {
-      alert("Game over! You've lost.");
+      Swal.fire({
+        title: "Unfortunately you lost!",
+        confirmButtonText: ":(",
+      });
 
       const bestScore = localStorage.getItem("bestScore");
       if (bestScore < score) {

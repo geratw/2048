@@ -1,0 +1,49 @@
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+
+.cell {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 36px;
+  font-weight: bold;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc0b3;
+}
+
+
+#info {
+  text-align: center;
+}
+
+/* Add CSS transitions for smooth animations */
+.cell {
+  transition: transform 0.2s ease;
+}
+
+/* Add CSS animations for specific movements */
+.move-up {
+  transform: translateY(-100%);
+}
+
+.move-down {
+  transform: translateY(100%);
+}
+
+.move-left {
+  transform: translateX(-100%);
+}
+
+.move-right {
+  transform: translateX(100%);
+}

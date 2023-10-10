@@ -38,6 +38,9 @@ function updateBoard() {
   for (let i = 0; i < boardSize; i++) {
     for (let j = 0; j < boardSize; j++) {
       const tile = board[i][j];
+      if (tile == 2048) {
+        vinGame();
+      }
       const cell = document.createElement("div");
       cell.classList.add("cell");
       cell.innerText = tile === 0 ? "" : tile;
@@ -45,6 +48,32 @@ function updateBoard() {
       boardElement.appendChild(cell);
     }
   }
+}
+
+function vinGame() {
+  Swal.fire({
+    title: "You are beautiful, congratulations on your victory",
+    width: 600,
+    padding: "3em",
+    customClass: {
+      heightAuto: false,
+      popup: "custom-popup",
+      confirmButton: "custom-confirm-button",
+    },
+    confirmButtonText: "UWU",
+    color: "#fff",
+    background: "#d383d2",
+    backdrop: `
+      rgba(0,0,123,0.4)
+      url("../images/happy-cat.gif")
+      left top
+    `,
+    allowOutsideClick: false,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      newGameStart();
+    }
+  });
 }
 
 function getTileColor(value) {
@@ -227,13 +256,17 @@ document.addEventListener("keydown", (event) => {
       Swal.fire({
         title: "Unfortunately you lost!",
         confirmButtonText: ":(",
+        allowOutsideClick: false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const bestScore = localStorage.getItem("bestScore");
+          if (bestScore < score) {
+            localStorage.setItem("bestScore", score);
+            document.getElementById("best-score").innerText = score;
+          }
+          newGameStart();
+        }
       });
-
-      const bestScore = localStorage.getItem("bestScore");
-      if (bestScore < score) {
-        localStorage.setItem("bestScore", score);
-        document.getElementById("best-score").innerText = score;
-      }
     }
   }
 });

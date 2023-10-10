@@ -61,7 +61,7 @@ function vinGame() {
     background: "#d383d2",
     backdrop: `
       rgba(0,0,123,0.4)
-      url("../images/happy-cat.gif")
+      url("images/happy-cat.gif")
       left top
     `,
     allowOutsideClick: false,
@@ -202,7 +202,7 @@ function spawnRandomTile() {
 
   if (emptyCells.length > 0) {
     const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-    board[randomCell.row][randomCell.col] = 1024;
+    board[randomCell.row][randomCell.col] = 2;
   }
 }
 
@@ -264,7 +264,7 @@ function gameOver() {
     background: "#49433e",
     backdrop: `
       rgba(0,0,123,0.4)
-      url("../images/rain.gif")
+      url("images/rain.gif")
       left top
     `,
     allowOutsideClick: false,

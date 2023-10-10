@@ -16,7 +16,18 @@ html {
   background: linear-gradient(90deg, #f9d49a, #d4a8cf);
   color: #4a3647;
   padding: 0.5em 0.75em;
+
 }
+
+.custom-popup {
+  border-radius: 60px;  
+  font-family: 'Pixelify Sans', cursive;
+}
+.custom-confirm-button {
+  font-family: 'Pixelify Sans', cursive;
+}
+
+
 
 .status-game {
   display: flex;

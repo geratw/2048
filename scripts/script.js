@@ -1,6 +1,24 @@
 const BOARDSIZE = 4;
 let board = [];
 let score = 0;
+const mergeAudio = new Audio("images/SoundStep.mp3");
+
+function toggleMute() {
+  const soundImage = document.getElementById("soundImage");
+
+  if (mergeAudio.muted === true) {
+    mergeAudio.muted = false;
+    soundImage.src = "images/sound-on.png";
+  } else {
+    mergeAudio.muted = true;
+    soundImage.src = "images/sound-off.png";
+  }
+}
+
+function playMergeSound() {
+  mergeAudio.currentTime = 0;
+  mergeAudio.play();
+}
 
 const newGame = document.getElementById("newGame");
 newGame.addEventListener("click", () => {
@@ -110,6 +128,7 @@ function moveUp() {
       }
     }
   }
+  playMergeSound();
   return isMoved;
 }
 
@@ -134,6 +153,7 @@ function moveDown() {
       }
     }
   }
+  playMergeSound();
   return isMoved;
 }
 
@@ -158,6 +178,7 @@ function moveLeft() {
       }
     }
   }
+  playMergeSound();
   return isMoved;
 }
 
@@ -182,6 +203,7 @@ function moveRight() {
       }
     }
   }
+  playMergeSound();
   return isMoved;
 }
 

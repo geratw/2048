@@ -3,6 +3,44 @@ let board = [];
 let score = 0;
 const mergeAudio = new Audio("images/SoundStep.mp3");
 
+
+function addToTopScores(score) {
+  const topScores = JSON.parse(localStorage.getItem('topScores')) || [];
+  topScores.push(score);
+  topScores.sort((a, b) => b - a); 
+  topScores.splice(10); 
+  localStorage.setItem('topScores', JSON.stringify(topScores));
+}
+
+function showTopScores() {
+  const topScores = JSON.parse(localStorage.getItem("topScores")) || [];
+
+
+
+  let scoresText = "<h2>Top 10 Scores:</h2><ul>";
+  for (let i = 0; i < Math.min(10, topScores.length); i++) {
+    scoresText += `<li>${topScores[i]}</li>`;
+  }
+  scoresText += "</ul>";
+
+  Swal.fire({
+    html: scoresText,
+    width: 400,
+    padding: "2em",
+    customClass: {
+      heightAuto: false,
+      popup: "custom-popup",
+    },
+    confirmButtonText: "Close",
+    color: "#fff",
+    background: "#d383d2",
+    backdrop: `
+      rgba(0,0,123,0.4)
+    `,
+    allowOutsideClick: true,
+  });
+}
+
 function toggleMute() {
   const soundImage = document.getElementById("soundImage");
 
@@ -293,6 +331,7 @@ function gameOver() {
   }).then((result) => {
     if (result.isConfirmed) {
       const bestScore = localStorage.getItem("bestScore");
+      addToTopScores(score);
       if (bestScore < score) {
         localStorage.setItem("bestScore", score);
         document.getElementById("best-score").innerText = score;

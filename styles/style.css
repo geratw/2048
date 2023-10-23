@@ -125,53 +125,6 @@ html {
   transform: scale(1);
 } /*# sourceMappingURL=style.css.map */
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.footer a {
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-.footer-text {
-  margin: 0 10px;
-  font-family: "Mooli", sans-serif;
-  font-size: 20px;
-}
-
-.cover-image {
-  width: 350px;
-  height: 350px;
-}
-
-.logo-image {
-  width: 100px;
-  height: 100px;
-}
-
-.footer-items {
-  background-color: #7d7196;
-  border-radius: 100px 100px 0 0;
-}
-
-.year {
-  font-size: 15px;
-}
-
-.contact-details {
-  color: #030303;
-  font-size: 25px;
-  padding: auto;
-}
-
 .btn-sound {
   position: absolute;
   left: 50%;
